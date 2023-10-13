@@ -17,6 +17,7 @@ public class Main {
 		}	
 	}	
 }
+
 class Converter {
 	Scanner scanner;
 	public String input;
@@ -30,6 +31,7 @@ class Converter {
 		MI_KM,
 		G_OZ,
 		MM_IN,
+		INVALID,
 	}
 
 	public Converter() {
@@ -39,27 +41,33 @@ class Converter {
 		String unSplit = scanner.nextLine();
 		String split[] = unSplit.split("\\s+");
 
-		String match = split[0];
-		inputNum = Float.parseFloat(split[1]);
+		if (split.length != 2) {
+			System.out.println("1 or more than 2 parameters were entered, exiting.");
+			op = Operation.INVALID;
+		} else {
+			String match = split[0];
+			inputNum = Float.parseFloat(split[1]);
 
-		switch (match) {
-			case "1":
-				op = Operation.KG_LBS;
-				break;
-			case "2":
-				op = Operation.MI_KM;
-				break;
-			case "3":
-				op = Operation.G_OZ;
-				break;
-			case "4":
-				op = Operation.MM_IN;
-				break;
-			default:
-				System.out.println(match + " is not a valid option, exiting");
-				input = "exit";
-				break;
+			switch (match) {
+				case "1":
+					op = Operation.KG_LBS;
+					break;
+				case "2":
+					op = Operation.MI_KM;
+					break;
+				case "3":
+					op = Operation.G_OZ;
+					break;
+				case "4":
+					op = Operation.MM_IN;
+					break;
+				default:
+					System.out.println(match + " is not a valid option, restarting\n");
+					op = Operation.INVALID;
+					break;
+			}
 		}
+
 	}
 	public void giveOutput() {
 		convert(op, inputNum);
@@ -78,7 +86,7 @@ class Converter {
 			case MM_IN:
 				System.out.println(tempIn + " mm -> " + tempOut + " in\n");
 				break;
-			
+			case INVALID: break;
 		}
 
 	}
@@ -97,6 +105,7 @@ class Converter {
 			case MM_IN:
 				outputNum = inputNum / 25.4F;
 				break;
+			case INVALID: break;
 		}
 	}
 }
