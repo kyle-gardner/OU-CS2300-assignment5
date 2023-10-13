@@ -1,1 +1,17 @@
 how to use
+
+run the jar file with 
+	java -jar assignment5.jar
+
+once it starts it will print
+1. kg -> lbs
+2. mi -> km
+3. grams -> ounces
+4. mm -> in
+
+your input would look like this if you wanted to convert 10 kg to lbs
+	1 10
+
+that is, (first option kg -> lbs, 10 kg)
+
+if you dont input enough parameters it will restart, and if enter a wrong first option (something that isnt 1,2,3, or 4) it will restart

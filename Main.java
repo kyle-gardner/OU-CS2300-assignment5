@@ -42,7 +42,7 @@ class Converter {
 		String split[] = unSplit.split("\\s+");
 
 		if (split.length != 2) {
-			System.out.println("1 or more than 2 parameters were entered, exiting.");
+			System.out.println("1 or more than 2 parameters were entered, restarting.\n");
 			op = Operation.INVALID;
 		} else {
 			String match = split[0];
